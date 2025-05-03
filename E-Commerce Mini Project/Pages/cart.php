@@ -1,13 +1,46 @@
+<?php
+session_start();
+include 'connection.php';
+
+
+// Ensure session cart data exists
+if (!isset($_SESSION['cart'])) {
+  $_SESSION['cart'] = [];
+}
+
+$cart_items = $_SESSION['cart'] ?? [];
+$books_in_cart = [];
+
+echo '<pre>';
+print_r($_SESSION['cart']);
+echo '</pre>';
+
+if (!empty($cart_items)) {
+    $ids = implode(",", array_keys($cart_items));
+    $query = "SELECT * FROM books WHERE id IN ($ids)";
+    $result = $conn->query($query);
+
+    while ($row = $result->fetch_assoc()) {
+        $row['quantity'] = $cart_items[$row['id']];
+        $books_in_cart[] = $row;
+    }
+}
+?>
+
+
 <!DOCTYPE html>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cart</title>
         <link rel="stylesheet" href="../style.css" />
-        <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+        <style>
+          .cart-section-main{
+            padding-top: 300px;
+          }
+        </style>
     </head>
 
     <body>
@@ -21,7 +54,7 @@
                   <a href="Contact_us.html" class="nav_link">Contact Us</a>
                 </li>
                 <li class="nav_element">
-                  <a href="Cart.html" class="nav_link">Cart</a>
+                  <a href="cart.php" class="nav_link">Cart</a>
                 </li>
                 <li class="nav_element">
                     <a href="Checkout.html" class="nav_link">Check Out</a>

@@ -1,40 +1,36 @@
 <?php
-// setup_database.php - Combined DB connection + schema setup
+    // setup_database.php - Combined DB connection + schema setup
 
-// Configuration
-$host = "localhost";
-$user = "root";
-$pass = "1234";
-$dbname = "bookHeaven-eBook";
+    // Configuration
+    $host = "localhost";
+    $user = "root";
+    $pass = "1234";
+    $dbname = "bookHeaven_eBook";
 
-// Enable error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
+    // Enable error reporting
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('log_errors', 1);
 
-try {
     // Step 1: Connect to MySQL server (no DB yet)
     $conn = new mysqli($host, $user, $pass);
 
     if ($conn->connect_error) {
-        throw new Exception("❌ Connection failed: " . $conn->connect_error);
+        die ("Connection failed: " .$conn->connect_error);
     }
 
     // Step 2: Create Database
-    $sql = "CREATE DATABASE IF NOT EXISTS $dbname 
-            CHARACTER SET utf8mb4 
-            COLLATE utf8mb4_unicode_ci";
+    $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
+            
 
-    if ($conn->query($sql)) {
-        echo "✅ Database '$dbname' created or already exists.<br>";
-    } else {
-        throw new Exception("❌ Error creating database: " . $conn->error);
+    if ($conn->query($sql) !== TRUE) {
+        die("Error creating database: " . $conn->error);
     }
 
     // Step 3: Select the database
     $conn->select_db($dbname);
 
-    echo "✅ Connected to database '$dbname'.<br>";
+    echo "Connected to database '$dbname'.<br>";
 
     // Step 4: Table creation SQLs
 
@@ -132,11 +128,5 @@ try {
     }
 
     echo "🎉 All setup completed successfully!";
-} catch (Exception $e) {
-    die($e->getMessage());
-} finally {
-    if (isset($conn)) {
-        $conn->close();
-    }
-}
+
 ?>

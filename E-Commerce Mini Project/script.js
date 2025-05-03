@@ -1,37 +1,36 @@
-
-
-
 /* Login Validation */
 
-let lname = document.getElementById('lname');
-let lpsw = document.getElementById('lpsw');
-let lerrorMsg = document.querySelectorAll('.l');
-let patternName = /^[a-zA-Z0-9]+$/;
+// Select form elements
+let lname = document.getElementById('lname'); // Email field
+let lpsw = document.getElementById('lpsw'); // Password field
+let lerrorMsg = document.querySelectorAll('.l'); // Error messages
+
+// Email pattern (basic email format validation)
+let patternEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
 function submitLogin() {
+    // Check if fields are empty
     if (lname.value == '' || lpsw.value == '') {
         lerrorMsg.forEach(function (e) {
             e.textContent = 'Fill in all fields';
             e.classList.remove('not-visible');
-        })
+        });
         return false;
     } else {
-        if (patternName.test(lname.value)) {
-            if (lname.value == 'admin' && lpsw.value == 'admin') {
-                window.location.href = 'dashboard.html';
-                return false;
-            } else {
-                lerrorMsg[1].textContent = 'Account doesn\'t exist';
-                lerrorMsg[1].classList.remove('not-visible');
-                return false;
-            }
+        // Validate email format
+        if (patternEmail.test(lname.value)) {
+            // Simulate a successful login check with static values
+            return true;
+            
         } else {
-            lerrorMsg[0].textContent = 'Invalid characters';
+            // Invalid email format
+            lerrorMsg[0].textContent = 'Invalid email format';
             lerrorMsg[0].classList.remove('not-visible');
             return false;
         }
     }
 }
+
 
 function errorResetLogin() {
     lerrorMsg.forEach(function (e) {
@@ -40,33 +39,54 @@ function errorResetLogin() {
         }
     })
 }
-/* Sign-In Validation */
 
+/* Sign-Up Validation */
+
+// Select form elements
 let sname = document.getElementById('sname');
 let spsw = document.getElementById('spsw');
 let srpsw = document.getElementById('srpsw');
 let email = document.getElementById('email');
-let serrorMsg = document.querySelectorAll('.s');
+let serrorMsg = document.querySelectorAll('.error-msg');
+
+// Regular expression for validating name (letters and spaces only)
+let patternName = /^[a-zA-Z\s]+$/;
+
+// Regular expression for validating email
+patternEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
 function submitSign() {
+    // Check if any field is empty
     if (sname.value == '' || spsw.value == '' || email.value == '' || srpsw.value == '') {
         serrorMsg.forEach(function (e) {
             e.textContent = 'Fill in all fields';
             e.classList.remove('not-visible');
-        })
-        return false;
+        });
+        return false; // Prevent form submission
     } else {
+        // Validate name (only letters and spaces)
         if (patternName.test(sname.value)) {
+            // Validate email format
+            if (patternEmail.test(email.value)) {
+                // Check if passwords match
                 if (spsw.value === srpsw.value) {
-                    window.location.href = 'log-in.html';
-                    return false;
+                    // Allow form submission
+                    return true;
                 } else {
-                    serrorMsg[3].textContent = 'passwords do not match';
+                    // Display password mismatch error
+                    serrorMsg[3].textContent = 'Passwords do not match';
                     serrorMsg[3].classList.remove('not-visible');
                     return false;
                 }
+            } else {
+                // Display invalid email format error
+                serrorMsg[1].textContent = 'Invalid email format';
+                serrorMsg[1].classList.remove('not-visible');
+                return false;
+            }
         } else {
-            serrorMsg[0].textContent = 'Invalid characters';
+            // Display invalid name error
+            serrorMsg[0].textContent = 'Invalid name format';
             serrorMsg[0].classList.remove('not-visible');
             return false;
         }
@@ -79,9 +99,4 @@ function errorResetSign() {
             e.classList.add('not-visible');
         }
     })
-}
-
-/*Billing address Validation*/
-function formValidateBill(){
-    
 }

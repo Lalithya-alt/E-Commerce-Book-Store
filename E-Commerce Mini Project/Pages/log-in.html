@@ -37,17 +37,12 @@
         <div class="form-container">
           <div class="form-text">
             <h1 class="form-heading">Login</h1>
-            <form
-              action="#"
-              method="post"
-              onsubmit="return submitLogin()"
-              id="form1"
-            >
+            <form action="../backend/log-in.php" method="post" onsubmit="return submitLogin()" id="form1">
               <div class="inp-container">
                 <label class="inp-label" for="lname">Username</label>
                 <input
                   class="inp"
-                  type="text"
+                  type="email"
                   name="lname"
                   id="lname"
                   onfocus="errorResetLogin()"
@@ -75,17 +70,12 @@
             </form>
           </div>
           <div class="form-image-wrapper">
-            <img
-              class="form-image"
-              src="../assets/images/reading_book.jpg "
-              alt=""
-              srcset=""
-            />
+            <img class="form-image" src="../Assets/images/reading_book.jpg"/>
           </div>
         </div>
       </div>
 
-     <!--footer-->>
+     <!--footer-->
      <div class="wrapper brown--color">
         <div class="container">
           <footer class="row">
