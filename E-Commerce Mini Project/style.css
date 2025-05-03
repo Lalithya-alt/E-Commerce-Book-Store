@@ -159,12 +159,12 @@ body {
 
 .logo-header {
     display: block;
-    width: 6%;
+    width: 10%;
 }
 
 .logo-footer {
     display: block;
-    width: 100%;
+    width: 0%;
 }
 
 .nav_bar {
@@ -261,6 +261,7 @@ body {
     text-transform: uppercase;
     margin: 12px 0;
 }
+
 
 .section__1 {
     display: grid;
