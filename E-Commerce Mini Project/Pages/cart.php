@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
     <head>
         <meta charset="UTF-8" />
@@ -139,7 +140,7 @@
                   <a href="Contact_us.html" class="nav_link">Contact Us</a>
                 </li>
                 <li class="nav_element">
-                  <a href="cart.html" class="nav_link">Cart</a>
+                  <a href="cart.php" class="nav_link">Cart</a>
                 </li>
                 <li class="nav_element">
                     <a href="Checkout.html" class="nav_link">Check Out</a>
@@ -157,6 +158,48 @@
                 </div>
           </div> 
 
+          <!--cart table display-->
+
+       
+
+          <h2 id="table-heading" style="text-align: center;">Your Cart</h2>
+          <div class="table-container" style="align-items: center;">
+              <table id="table-cart" border ="1" style="margin: auto;">
+                  <tr>
+                      <th>BOOK NAME</th>
+                      <th>BOOK AUTHOR</th>
+                      <th>PRICE</th>
+                      <th>CREATED_AT</th>
+                      <th>ACTION</th> 
+                  </tr>
+
+                  <?php
+                  include '../backend/connection.php'; // Ensure this correctly initializes $conn
+
+                  $sql = "SELECT book_name, book_author, price, created_at FROM cart";
+                  $result = mysqli_query($conn, $sql);
+
+                  if (mysqli_num_rows($result) > 0):
+                      while ($row = mysqli_fetch_assoc($result)):
+                  ?>
+                          <tr>
+                              <td><?= htmlspecialchars($row['book_name']) ?></td>
+                              <td><?= htmlspecialchars($row['book_author']) ?></td>
+                              <td><?= htmlspecialchars($row['price']) ?></td>
+                              <td><?= htmlspecialchars($row['created_at']) ?></td>
+                          </tr>
+                  <?php
+                      endwhile;
+                  else:
+                      echo "<tr><td colspan='4'>No items in cart.</td></tr>";
+                  endif;
+                  ?>
+              </table>
+          </div>
+
+
+
+      <div style="width:1px; height:40px;"></div>      
           
       <!--footer-->
       <div class="wrapper brown--color">

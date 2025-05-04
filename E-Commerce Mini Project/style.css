@@ -158,12 +158,12 @@ body {
 }
 
 .logo-header {
-    display: block;
+    display: block; 
     width: 10%;
 }
 
 .logo-footer {
-    display: block;
+    display:block;
     width: 0%;
 }
 
@@ -743,11 +743,28 @@ body {
     margin: 24px 0;
 }
 
-#table-rooms {
-    width: 100%;
+#table-cart {
+    width: 60%;
     border-collapse: collapse;
     border-radius: 8px;
     overflow: hidden;
+   
+}
+
+#table-users {
+    width: 60%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+   
+}
+
+#table-books {
+    width: 60%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+   
 }
 
 th,
