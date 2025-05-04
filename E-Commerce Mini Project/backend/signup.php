@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows > 0) {
         echo "Username or Email already exists!";
+        header("Location: ../Pages/log-in.html");
         exit();
     }
 
