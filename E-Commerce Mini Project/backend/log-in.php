@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($email === $adminEmail && $password === $adminPassword) {
         $_SESSION['email'] = $adminEmail;
         $_SESSION['is_admin'] = true;  // You can use this flag to check for admin permissions
-        header("Location: ../Pages/admin-dashboard.php");
+        header("Location: ../Pages/admin/admin-dashboard.html");
         exit;
     }
 

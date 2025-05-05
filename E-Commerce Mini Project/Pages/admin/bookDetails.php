@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Log In</title>
-        <link rel="stylesheet" href="../style.css" />
+        <link rel="stylesheet" href="../../style.css" />
         <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -15,7 +15,7 @@
         <!--header-->
     <header class="header">
         <nav class="nav_bar">
-        <img class="logo-header" src="..\Assets\images\logo-header.jpg" alt="" srcset="" width="100%">
+        <img class="logo-header" src="../../Assets/images/logo-header.jpg" alt="" srcset="" width="100%">
         <ul class="nav_list">
             <li class="nav_element">
             <a href="Index.html" class="nav_link">Home</a></li>
@@ -33,87 +33,9 @@
         </nav>
     </header>
 
-    <div style="width:1px; height:250px;"></div>   
+    <div style="width:1px; height:250px;"></div>  
 
-    <!--user Details-->
-    <h3 id="table-heading" style="text-align: center;">USER DETAILS</h3>
-    <div class="table-container" style="align-items: center;">
-    <table id="table-users" border="1" style="margin: auto;">
-        <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>EMAIL</th>
-            <th>ROLE</th>
-            <th>CREATED_AT</th>
-        </tr>
-
-        <?php
-        include '../backend/connection.php';
-
-        $sql = "SELECT id, name, email, role, created_at, updated_at FROM users";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0):
-            while ($row = mysqli_fetch_assoc($result)):
-        ?>
-                <tr>
-                    <td><?= htmlspecialchars($row['id']) ?></td>
-                    <td><?= htmlspecialchars($row['name']) ?></td>
-                    <td><?= htmlspecialchars($row['email']) ?></td>
-                    <td><?= htmlspecialchars($row['role']) ?></td>
-                    <td><?= htmlspecialchars($row['created_at']) ?></td>
-        
-                </tr>
-        <?php
-            endwhile;
-        else:
-            echo "<tr><td colspan='6'>No users found.</td></tr>";
-        endif;
-        ?>
-    </table>
-</div>
-
-  
-    <!-- Cart-->
-
-    <h3 id="table-heading" style="text-align: center;">CART DETAILS</h3>
-          <div class="table-container" style="align-items: center;">
-              <table id="table-cart" border ="1" style="margin: auto;">
-                  <tr>
-                      <th>BOOK NAME</th>
-                      <th>BOOK AUTHOR</th>
-                      <th>PRICE</th>
-                      <th>CREATED_AT</th>
-                
-                  </tr>
-
-                  <?php
-                  include '../backend/connection.php'; // Ensure this correctly initializes $conn
-
-                  $sql = "SELECT book_name, book_author, price, created_at FROM cart";
-                  $result = mysqli_query($conn, $sql);
-
-                  if (mysqli_num_rows($result) > 0):
-                      while ($row = mysqli_fetch_assoc($result)):
-                  ?>
-                          <tr>
-                              <td><?= htmlspecialchars($row['book_name']) ?></td>
-                              <td><?= htmlspecialchars($row['book_author']) ?></td>
-                              <td><?= htmlspecialchars($row['price']) ?></td>
-                              <td><?= htmlspecialchars($row['created_at']) ?></td>
-                          </tr>
-                  <?php
-                      endwhile;
-                  else:
-                      echo "<tr><td colspan='4'>No items in cart.</td></tr>";
-                  endif;
-                  ?>
-              </table>
-          </div>
-
-      <div style="width:1px; height:40px;"></div>     
-
-                <!--Book details-->
+                    <!--Book details-->
 
                 
  <h3 id="table-heading" style="text-align: center;">BOOK DETAILS</h3>
@@ -129,7 +51,7 @@
         </tr>
 
         <?php
-        include '../backend/connection.php';
+        include '../../backend/connection.php';
 
         $sql = "SELECT title, author, price, stock, description, category_name, created_at 
                 FROM books";
@@ -166,7 +88,7 @@
         <div class="container">
           <footer class="row">
             <div class="footer-col footer-col-logo">
-              <img class="logo-footer" src="../Assets/images/logo-header.jpg" alt="" srcset="" />
+              <img class="logo-footer" src="../../Assets/images/logo-header.jpg" alt="" srcset="" />
             </div>
             <div class="footer-col">
               <h4 class="footer-col-hading">Company</h4>
