@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
     <head>
@@ -175,18 +178,23 @@
 
                   <?php
                   include '../backend/connection.php'; // Ensure this correctly initializes $conn
+                  $user_id = $_SESSION['user_id'];
+                  $sql = "SELECT id, book_name, book_author, price, created_at FROM cart WHERE user_id = ?";
+                  $stmt = $conn->prepare($sql);
+                  $stmt->bind_param("i", $user_id);
+                  $stmt->execute();
+                  // $result = mysqli_query($conn, $sql);
+                  $result = $stmt->get_result();
 
-                  $sql = "SELECT book_name, book_author, price, created_at FROM cart";
-                  $result = mysqli_query($conn, $sql);
-
-                  if (mysqli_num_rows($result) > 0):
-                      while ($row = mysqli_fetch_assoc($result)):
+                  if ($result->num_rows > 0):
+                    while ($row = $result->fetch_assoc()):
                   ?>
                           <tr>
                               <td><?= htmlspecialchars($row['book_name']) ?></td>
                               <td><?= htmlspecialchars($row['book_author']) ?></td>
                               <td><?= htmlspecialchars($row['price']) ?></td>
                               <td><?= htmlspecialchars($row['created_at']) ?></td>
+                              <td><a href="../backend/remove_from_cart.php?id=<?= $row['id'] ?>">Remove</a></td>
                           </tr>
                   <?php
                       endwhile;

@@ -100,3 +100,37 @@ function errorResetSign() {
         }
     })
 }
+
+//feedback form validation
+function FeedbackFormValidate() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const comment = document.getElementById("comment").value.trim();
+    const errorEl = document.getElementById("error");
+
+    // Reset previous error
+    errorEl.textContent = "";
+    errorEl.style.color = "white";
+
+    // Check if any field is empty
+    if (!name || !email || !comment) {
+        errorEl.textContent = "All fields are required.";
+        return false; // Prevent submission
+    }
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        errorEl.textContent = "Enter a valid email address.";
+        return false;
+    }
+
+    return true; // Allow submission
+}
+
+function resetError() {
+    const errorEl = document.getElementById("error");
+    errorEl.textContent = "";
+}
+
+

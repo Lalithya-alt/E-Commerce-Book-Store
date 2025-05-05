@@ -5,7 +5,7 @@
     $host = "localhost";
     $user = "root";
     $pass = "1234";
-    $dbname = "bookHeaven_eBook";
+    $dbname = "online_bookstore";
 
     // Enable error reporting
     error_reporting(E_ALL);
@@ -74,16 +74,12 @@
         FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
     ) ENGINE=InnoDB";
 
-    $createMessages = "CREATE TABLE IF NOT EXISTS messages (
+    $createMessages = "CREATE TABLE IF NOT EXISTS feedback (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        user_id INT NULL,
-        name VARCHAR(100) NOT NULL,
+        user_name VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL,
-        subject VARCHAR(255) NOT NULL,
         message TEXT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        is_read BOOLEAN DEFAULT FALSE,
-        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB";
 
     // Create tables
@@ -92,7 +88,7 @@
         'books' => $createBooks,
         'cart' => $createcart,
         'order_items' => $createOrderItems,
-        'messages' => $createMessages
+        'feedback' => $createMessages
     ];
 
     foreach ($tables as $name => $sql) {
