@@ -23,7 +23,7 @@ body {
 }
 
 .wrapper {
-    padding-top: 80px; 
+    padding-top: 20px; 
     background-color: #f8f9fa;
     flex: 1 0 auto; 
 }
@@ -735,6 +735,7 @@ body {
 .table-container {
     max-height: 480px;
     overflow-y: auto;
+    padding-bottom: 200px;
 }
 
 #table-heading {
