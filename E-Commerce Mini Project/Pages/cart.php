@@ -179,7 +179,7 @@ session_start();
                   <?php
                   include '../backend/connection.php'; // Ensure this correctly initializes $conn
                   $user_id = $_SESSION['user_id'];
-                  $sql = "SELECT book_name, book_author, price, created_at FROM cart WHERE user_id = ?";
+                  $sql = "SELECT id, book_name, book_author, price, created_at FROM cart WHERE user_id = ?";
                   $stmt = $conn->prepare($sql);
                   $stmt->bind_param("i", $user_id);
                   $stmt->execute();
@@ -194,6 +194,7 @@ session_start();
                               <td><?= htmlspecialchars($row['book_author']) ?></td>
                               <td><?= htmlspecialchars($row['price']) ?></td>
                               <td><?= htmlspecialchars($row['created_at']) ?></td>
+                              <td><a href="../backend/remove_from_cart.php?id=<?= $row['id'] ?>">Remove</a></td>
                           </tr>
                   <?php
                       endwhile;
