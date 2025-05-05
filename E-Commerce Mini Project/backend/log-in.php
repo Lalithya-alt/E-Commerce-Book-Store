@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Check if password matches (use password_verify if passwords are hashed)
         if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id']; 
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role']; // Storing user role for access control
             header("Location: ../Pages/Index.html");
