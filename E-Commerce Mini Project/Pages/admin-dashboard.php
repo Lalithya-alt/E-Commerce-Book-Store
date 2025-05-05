@@ -37,7 +37,7 @@
 
     <!--user Details-->
     <h3 id="table-heading" style="text-align: center;">USER DETAILS</h3>
-<div class="table-container" style="align-items: center;">
+    <div class="table-container" style="align-items: center;">
     <table id="table-users" border="1" style="margin: auto;">
         <tr>
             <th>ID</th>
@@ -131,7 +131,9 @@
         <?php
         include '../backend/connection.php';
 
-        $sql = "SELECT title, author, price, stock, category, created_at FROM books";
+        $sql = "SELECT b.title, b.author, b.price, b.stock, c.name AS category_name, b.created_at 
+                FROM books b
+                LEFT JOIN categories c ON b.category_id = c.category_id";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0):
@@ -142,7 +144,7 @@
                     <td><?= htmlspecialchars($row['author']) ?></td>
                     <td><?= htmlspecialchars($row['price']) ?></td>
                     <td><?= htmlspecialchars($row['stock']) ?></td>
-                    <td><?= htmlspecialchars($row['category']) ?></td>
+                    <td><?= htmlspecialchars($row['category_name']) ?></td>
                     <td><?= htmlspecialchars($row['created_at']) ?></td>
                 </tr>
         <?php
