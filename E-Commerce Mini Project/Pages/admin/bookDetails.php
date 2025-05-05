@@ -34,6 +34,7 @@
     </header>
 
     <div style="width:1px; height:250px;"></div>  
+    <a href="add_book.html"><button>Add Book</button></a>
 
                     <!--Book details-->
 
@@ -75,6 +76,7 @@
         endif;
         ?>
     </table>
+    
 </div>
 
 <!--<div style="width:1px; height:40px;"></div> 
