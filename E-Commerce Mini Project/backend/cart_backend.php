@@ -13,8 +13,8 @@ if (isset($_GET['id'])) {
     $book_id = $_GET['id'];
 
     // Fetch book info from books table
-    $stmt = $conn->prepare("SELECT title, author, price FROM books WHERE id = ?");
-    $stmt->bind_param("i", $book_id);
+    $stmt = $conn->prepare("SELECT title, author, price FROM books WHERE title = ?");
+    $stmt->bind_param("s", $book_id);
     $stmt->execute();
     $result = $stmt->get_result();
 

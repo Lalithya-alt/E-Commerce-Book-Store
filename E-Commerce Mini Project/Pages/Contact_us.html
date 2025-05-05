@@ -216,7 +216,8 @@
 
     <div class="wrapper">
         <div class="container">
-            <form id="contactForm" onsubmit="return formValidate()">
+            <form id="contactForm" method="POST" action="../backend/feedback.php" onsubmit="return FeedbackFormValidate()">
+
                 <h2 class="text__section__heading">Feedback</h2>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" onfocus="resetError()">
