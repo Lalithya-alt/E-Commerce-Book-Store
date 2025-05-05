@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
     <head>
@@ -162,44 +165,38 @@
 
        
 
-          <h2 id="table-heading" style="text-align: center;">Your Cart</h2>
-          <div class="table-container" style="align-items: center;">
-              <table id="table-cart" border ="1" style="margin: auto;">
-                  <tr>
-                      <th>BOOK NAME</th>
-                      <th>BOOK AUTHOR</th>
-                      <th>PRICE</th>
-                      <th>CREATED_AT</th>
-                      <th>ACTION</th> 
-                  </tr>
+        <h2 id="table-heading" style="text-align: center;">Your Cart</h2>
+        <div class="table-container" style="align-items: center;">
+          <table id="table-cart" border="1" style="margin: auto;">
+            <tr>
+                <th>BOOK NAME</th>
+                <th>BOOK AUTHOR</th>
+                <th>PRICE</th>
+                <th>ACTION</th>
+            </tr>
 
-                  <?php
-                  include '../backend/connection.php'; // Ensure this correctly initializes $conn
+            <?php
+            if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])):
+                foreach ($_SESSION['cart'] as $index => $item):
+            ?>
+                    <tr>
+                        <td><?= htmlspecialchars($item['book_name']) ?></td>
+                        <td><?= htmlspecialchars($item['book_author']) ?></td>
+                        <td><?= htmlspecialchars($item['price']) ?></td>
+                        <td>
+                            <a href="remove_from_cart.php?index=<?= $index ?>">Remove</a>
+                        </td>
+                    </tr>
+            <?php
+                endforeach;
+            else:
+                echo "<tr><td colspan='4'>No items in cart.</td></tr>";
+            endif;
+            ?>
+        </table>
+    </div>
 
-                  $sql = "SELECT book_name, book_author, price, created_at FROM cart";
-                  $result = mysqli_query($conn, $sql);
-
-                  if (mysqli_num_rows($result) > 0):
-                      while ($row = mysqli_fetch_assoc($result)):
-                  ?>
-                          <tr>
-                              <td><?= htmlspecialchars($row['book_name']) ?></td>
-                              <td><?= htmlspecialchars($row['book_author']) ?></td>
-                              <td><?= htmlspecialchars($row['price']) ?></td>
-                              <td><?= htmlspecialchars($row['created_at']) ?></td>
-                          </tr>
-                  <?php
-                      endwhile;
-                  else:
-                      echo "<tr><td colspan='4'>No items in cart.</td></tr>";
-                  endif;
-                  ?>
-              </table>
-          </div>
-
-
-
-      <div style="width:1px; height:40px;"></div>      
+    <div style="width:1px; height:40px;"></div>
           
       <!--footer-->
       <div class="wrapper brown--color">

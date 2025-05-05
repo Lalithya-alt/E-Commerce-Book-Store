@@ -5,7 +5,7 @@
     $host = "localhost";
     $user = "root";
     $pass = "1234";
-    $dbname = "bookHeaven_eBook";
+    $dbname = "online_bookstore";
 
     // Enable error reporting
     error_reporting(E_ALL);
