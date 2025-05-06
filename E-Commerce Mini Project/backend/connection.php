@@ -4,7 +4,7 @@
     // Configuration
     $host = "localhost";
     $user = "root";
-    $pass = "1234";
+    $pass = "";
     $dbname = "online_bookstore";
 
     // Enable error reporting
@@ -90,6 +90,21 @@
         FOREIGN KEY (order_id) REFERENCES cart(id) ON DELETE CASCADE
     ) ENGINE=InnoDB";
 
+$createcheckout = "
+CREATE TABLE IF NOT EXISTS checkout_info (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    street_name VARCHAR(100),
+    city VARCHAR(50),
+    country VARCHAR(50),
+    zip_code VARCHAR(20),
+    name_on_card VARCHAR(100),
+    credit_card_no VARCHAR(30),
+    exp_month_year VARCHAR(7), 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+
     // Create tables
     $tables = [
         'users' => $createUsers,
@@ -97,7 +112,8 @@
         'cart' => $createcart,
         'order_items' => $createOrderItems,
         'feedback' => $createMessages,
-        'payments' => $createPayments
+        'payments' => $createPayments,
+        'checkout'=> $createcheckout
     ];
 
     foreach ($tables as $name => $sql) {
