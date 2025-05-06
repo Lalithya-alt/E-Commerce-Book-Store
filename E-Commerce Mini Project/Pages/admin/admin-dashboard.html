@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Log In</title>
-        <link rel="stylesheet" href="../style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../../style.css" />
         <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
-    </head>
-
-    <body>
-        <!--header-->
+        <style>
+            .btnSectionAdminDash{
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 200px;
+                padding-bottom: 300px;
+            }
+            
+        </style>
+</head>
+<body>
+    
     <header class="header">
         <nav class="nav_bar">
-        <img class="logo-header" src="..\Assets\images\logo-header.jpg" alt="" srcset="" width="100%">
-        <ul class="nav_list">
+            <img class="logo-header" src="../../Assets/images/logo-header.png" alt="" srcset="" width="100%">
+            <ul class="nav_list">
             <li class="nav_element">
-            <a href="Index.html" class="nav_link">Home</a></li>
-            <li class="nav_element">
-            <a href="Contact_us.html" class="nav_link">Contact Us</a>
+                <a href="../Index.html" class="nav_link">Home</a>
             </li>
             <li class="nav_element">
-            <a href="cart.php" class="nav_link">Cart</a>
+                <a href="Contact_us.html" class="nav_link">Contact Us</a>
             </li>
             <li class="nav_element">
-                <a href="Checkout.php" class="nav_link">Check Out</a>
+                <a href="cart.php" class="nav_link">Cart</a>
             </li>
-        </ul>
-        <a class="btn btn-small" href="../dashboard.html">Log Out</a>
+            <li class="nav_element">
+                <a href="Checkout.html" class="nav_link">Check Out</a>
+                </li>
+            </ul>
+            <a class="btn btn-small" href="../../dashboard.html">Log Out</a>
         </nav>
-    </header>
+        </header>
+            <div class="btnSectionAdminDash">
+                <a href="userDetails.php"><button class="btn btn-small">User Details</button></a>
+                <a href="bookDetails.php"><button class="btn btn-small">Book Details</button></a>
+                <a href="cartDetails.php"><button class="btn btn-small">Cart Details</button></a>
+            </div>
 
-    <div style="width:1px; height:250px;"></div>   
+    
 
-     <!--footer-->
-     <div class="wrapper brown--color">
+    <!--footer-->
+    <div class="wrapper brown--color">
         <div class="container">
           <footer class="row">
             <div class="footer-col footer-col-logo">
-              <img class="logo-footer" src="../Assets/images/logo-header.jpg" alt="" srcset="" />
+              <img class="logo-footer" src="../../assets/images/logo-header.jpg" alt="" srcset="" />
             </div>
             <div class="footer-col">
               <h4 class="footer-col-hading">Company</h4>
@@ -68,6 +82,6 @@
           </footer>
         </div>
       </div>
-      <script src="../script.js"></script>
-    </body>
-  </html>
+      <script src="../../script.js"></script>
+</body>
+</html>

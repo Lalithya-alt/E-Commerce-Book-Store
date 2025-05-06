@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Book</title>
+</head>
+<body>
+    <h1>Add New Book</h1>
+    <form action="../../backend/admin/add_book.php" method="POST" enctype="multipart/form-data">
+        <label for="title">Book Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required><br><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br><br>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock"><br><br>
+
+        <label for="image">Book Image:</label>
+        <input type="file" id="image" name="image"><br><br>
+
+        <!-- <label for="image_folder">Image Folder:</label>
+        <select id="image_folder" name="image_folder" required>
+            <option value="poems">Poems</option>
+            <option value="sinhala">Sinhala</option>
+            <option value="english">English</option>
+        </select><br><br> -->
+
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="poems">Poems</option>
+            <option value="sinhala">Sinhala Books</option>
+            <option value="english">English Books</option>
+        </select><br><br>
+
+        <button type="submit">Add Book</button>
+    </form>
+</body>
+</html>

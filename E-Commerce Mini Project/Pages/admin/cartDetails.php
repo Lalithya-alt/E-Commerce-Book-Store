@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Log In</title>
-        <link rel="stylesheet" href="../style.css" />
+        <link rel="stylesheet" href="../../style.css" />
         <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -15,7 +15,7 @@
         <!--header-->
     <header class="header">
         <nav class="nav_bar">
-        <img class="logo-header" src="..\Assets\images\logo-header.jpg" alt="" srcset="" width="100%">
+        <img class="logo-header" src="../../Assets/images/logo-header.jpg" alt="" srcset="" width="100%">
         <ul class="nav_list">
             <li class="nav_element">
             <a href="Index.html" class="nav_link">Home</a></li>
@@ -23,66 +23,63 @@
             <a href="Contact_us.html" class="nav_link">Contact Us</a>
             </li>
             <li class="nav_element">
-            <a href="Cart.php" class="nav_link">Cart</a>
+            <a href="cart.php" class="nav_link">Cart</a>
             </li>
             <li class="nav_element">
-                <a href="Checkout.php" class="nav_link">Check Out</a>
+                <a href="Checkout.html" class="nav_link">Check Out</a>
             </li>
         </ul>
-        <!-- <a class="btn btn-small" href="log-in.html">Log In</a> -->
+        <a class="btn btn-small" href="../dashboard.html">Log Out</a>
         </nav>
     </header>
 
-    <div style="width:1px; height:200px;"></div>
+    <div style="width:1px; height:250px;"></div>  
 
-    <div class="container">
-        <div class="form-container">
-          <div class="form-text">
-            <h1 class="form-heading">Login</h1>
-            <form action="../backend/log-in.php" method="post" onsubmit="return submitLogin()" id="form1">
-              <div class="inp-container">
-                <label class="inp-label" for="lname">Username</label>
-                <input
-                  class="inp"
-                  type="email"
-                  name="lname"
-                  id="lname"
-                  onfocus="errorResetLogin()"
-                />
-                <p class="l error-msg not-visible">error</p>
-              </div>
-              <div class="inp-container">
-                <label class="inp-label" for="lpsw">Password</label>
-                <input
-                  class="inp"
-                  type="password"
-                  name="lpsw"
-                  id="lpsw"
-                  onfocus="errorResetLogin()"
-                />
-                <p class="l error-msg not-visible">error</p>
-              </div>
-              <p class="form-bottom-text">
-                If you don't have an account <a href="sign-up.html">Sign Up</a>
-              </p>
-              <div class="btn-container">
-                <input class="btn btn-small" type="submit" value="submit" />
-                <input class="btn btn-small" type="reset" value="clear" />
-              </div>
-            </form>
+   <!-- Cart-->
+
+   <h3 id="table-heading" style="text-align: center;">CART DETAILS</h3>
+          <div class="table-container" style="align-items: center;">
+              <table id="table-cart" border ="1" style="margin: auto;">
+                  <tr>
+                      <th>BOOK NAME</th>
+                      <th>BOOK AUTHOR</th>
+                      <th>PRICE</th>
+                      <th>CREATED_AT</th>
+                
+                  </tr>
+
+                  <?php
+                  include '../../backend/connection.php'; // Ensure this correctly initializes $conn
+
+                  $sql = "SELECT book_name, book_author, price, created_at FROM cart";
+                  $result = mysqli_query($conn, $sql);
+
+                  if (mysqli_num_rows($result) > 0):
+                      while ($row = mysqli_fetch_assoc($result)):
+                  ?>
+                          <tr>
+                              <td><?= htmlspecialchars($row['book_name']) ?></td>
+                              <td><?= htmlspecialchars($row['book_author']) ?></td>
+                              <td><?= htmlspecialchars($row['price']) ?></td>
+                              <td><?= htmlspecialchars($row['created_at']) ?></td>
+                          </tr>
+                  <?php
+                      endwhile;
+                  else:
+                      echo "<tr><td colspan='4'>No items in cart.</td></tr>";
+                  endif;
+                  ?>
+              </table>
           </div>
-          <div class="form-image-wrapper">
-            <img class="form-image" src="../Assets/images/reading_book.jpg"/>
-          </div>
-        </div>
-      </div>
+
+      <div style="width:1px; height:40px;"></div>     
 
      <!--footer-->
      <div class="wrapper brown--color">
         <div class="container">
           <footer class="row">
             <div class="footer-col footer-col-logo">
-              <img class="logo-footer" src="assets/images/logo-header.jpg" alt="" srcset="" />
+              <img class="logo-footer" src="../../Assets/images/logo-header.jpg" alt="" srcset="" />
             </div>
             <div class="footer-col">
               <h4 class="footer-col-hading">Company</h4>
