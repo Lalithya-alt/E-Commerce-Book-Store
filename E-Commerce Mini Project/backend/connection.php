@@ -105,6 +105,14 @@ CREATE TABLE IF NOT EXISTS checkout_info (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
+$checkotedbooks="CREATE TABLE IF NOT EXISTS checkout_books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    checkout_id INT,
+    book_name VARCHAR(255),
+    book_author VARCHAR(255),
+    FOREIGN KEY (checkout_id) REFERENCES checkout_info(id) ON DELETE CASCADE
+)";
+
     // Create tables
     $tables = [
         'users' => $createUsers,
@@ -113,7 +121,8 @@ CREATE TABLE IF NOT EXISTS checkout_info (
         'order_items' => $createOrderItems,
         'feedback' => $createMessages,
         'payments' => $createPayments,
-        'checkout'=> $createcheckout
+        'checkout'=> $createcheckout,
+        'checkoutedboks'=>$checkotedbooks
     ];
 
     foreach ($tables as $name => $sql) {

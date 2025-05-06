@@ -112,7 +112,7 @@ if (isset($_SESSION['user_id'])) {
           <a href="Cart.php" class="nav_link">Cart</a>
         </li>
         <li class="nav_element">
-          <a href="Checkout.html" class="nav_link">Check Out</a>
+          <a href="Checkout.php" class="nav_link">Check Out</a>
         </li>
       </ul>
       <a class="btn btn-small" href="../dashboard.html">Log Out</a>

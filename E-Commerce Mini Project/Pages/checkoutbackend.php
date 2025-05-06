@@ -13,6 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $credit_card_no = trim($_POST['creadit_card_no'] ?? '');
     $exp_month_year = trim($_POST['exp_month&year'] ?? '');
 
+    $book_names = $_POST['book_name'] ?? [];
+    $book_authors = $_POST['book_author'] ?? [];
+
     $errors = [];
 
     if (empty($name)) $errors[] = "Name is required.";
@@ -28,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($exp_month_year) && !preg_match('/^\d{4}-\d{2}$/', $exp_month_year)) {
         $errors[] = "Expiry must be in YYYY-MM format.";
     }
+
+    if (empty($book_authors)) $errors[]="Not book Selected";
 
     if (!empty($errors)) {
         echo "<ul style='color:red;'>";
@@ -48,11 +53,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("sssssssss", $name, $email, $street, $city, $country, $zipcode, $name_on_card, $credit_card_no, $exp_month_year);
 
     if ($stmt->execute()) {
-        // ✅ Success popup and redirect
+        $checkout_id = $conn->insert_id; // Get the ID for linking books
+
+        // Insert each book
+        $book_stmt = $conn->prepare("INSERT INTO checkout_books (checkout_id, book_name, book_author) VALUES (?, ?, ?)");
+
+        for ($i = 0; $i < count($book_names); $i++) {
+            $book_name = $book_names[$i];
+            $book_author = $book_authors[$i];
+            $book_stmt->bind_param("iss", $checkout_id, $book_name, $book_author);
+            $book_stmt->execute();
+        }
+
         echo "<script>
-        alert('✅ Checkout successful! Thank you for your order.');
-        window.location.href = '../pages/Checkout.html'; // or confirmation page
-    </script>";
+            alert('✅ Checkout successful! Thank you for your order.');
+            window.location.href = '../pages/Checkout.php';
+        </script>";
         exit;
     } else {
         echo "<script>
