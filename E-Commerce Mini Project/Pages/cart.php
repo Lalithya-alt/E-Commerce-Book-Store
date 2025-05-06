@@ -129,6 +129,17 @@ session_start();
           #error{
             color: red;
           }
+
+          .btn-proceed {
+            background-color: #0B2E33;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            }
+
         </style>
     </head>
 
@@ -176,7 +187,7 @@ session_start();
                       <th>ACTION</th> 
                   </tr>
 
-                  <?php
+          <?php
                   include '../backend/connection.php'; // Ensure this correctly initializes $conn
                   $user_id = $_SESSION['user_id'];
                   $sql = "SELECT id, book_name, book_author, price, created_at FROM cart WHERE user_id = ?";
@@ -196,7 +207,7 @@ session_start();
                               <td><?= htmlspecialchars($row['created_at']) ?></td>
                               <td><a href="../backend/remove_from_cart.php?id=<?= $row['id'] ?>">Remove</a></td>
                           </tr>
-                  <?php
+            <?php
                       endwhile;
                   else:
                       echo "<tr><td colspan='4'>No items in cart.</td></tr>";
@@ -205,6 +216,46 @@ session_start();
               </table>
           </div>
 
+          <?php
+  // Reset result to calculate total
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $total = 0;
+                while ($row = $result->fetch_assoc()) {
+                $total += $row['price'];
+                }
+            ?>
+            <div style="width: 80%; margin: 20px auto; text-align: right;">
+            <p>Total: Rs. <span id="totalAmount"><?= $total ?></span></p>
+            <!-- <button onclick="proceedToCheckout()">Proceed</button> -->
+            <button class="btn-proceed" onclick="proceedToCheckout()">Proceed</button>
+            </div>
+
+
+
+          <script>
+             function proceedToCheckout() {
+             const total = document.getElementById("totalAmount").innerText;
+             localStorage.setItem("cartTotal", total);
+
+  // Collect book names and prices from the table (assuming a table with ID 'table-cart' exists)
+             let cartItems = [];
+             const rows = document.querySelectorAll("#table-cart tr:not(:first-child)");
+
+             rows.forEach(row => {
+             const cells = row.querySelectorAll("td");
+             if (cells.length >= 3) {
+             cartItems.push({
+             bookName: cells[0].innerText.trim(),
+             price: cells[2].innerText.trim()
+             });
+             }
+             });
+
+             localStorage.setItem("cartItems", JSON.stringify(cartItems));
+             window.location.href = "Checkout.html";
+            }
+            </script>
 
 
       <div style="width:1px; height:40px;"></div>      
