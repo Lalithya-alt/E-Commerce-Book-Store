@@ -33,8 +33,11 @@
         </nav>
     </header>
 
-    <div style="width:1px; height:250px;"></div>  
-    <a href="add_book.html"><button>Add Book</button></a>
+    <div style="width:1px; height:250px ;"></div>  
+    
+    <a href="add_book.html" ><input class="btn btn-small"  type="button" value="ADD BOOK" ></a>
+   
+               
 
                     <!--Book details-->
 
@@ -76,6 +79,8 @@
         endif;
         ?>
     </table>
+
+
     
 </div>
 
