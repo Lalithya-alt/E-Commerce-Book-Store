@@ -4,18 +4,29 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ADD BOOK</title>
-        <link rel="stylesheet" href="../pages/style.css" />
+        <link rel="stylesheet" href="../../style.css" />
         <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
+        <style>
+          .addBookForm{
+              padding-top: 200px;
+              margin-left: auto;
+              margin-right: auto;
+              padding-bottom: 50px;
+          }
+          h1{
+            text-align: center;
+          }
+        </style>
     </head>
 <body>
 
         <!--header-->
         <header class="header">
             <nav class="nav_bar">
-            <img class="logo-header" src="..\Assets\images\logo-header.jpg" alt="" srcset="" width="100%">
+            <img class="logo-header" src="../../Assets/images/logo-header.jpg" alt="" srcset="" width="100%">
             <ul class="nav_list">
                 <li class="nav_element">
                 <a href="Index.html" class="nav_link">Home</a></li>
@@ -29,46 +40,58 @@
                     <a href="Checkout.php" class="nav_link">Check Out</a>
                 </li>
             </ul>
-            <!-- <a class="btn btn-small" href="log-in.html">Log In</a> -->
+            <a class="btn btn-small" href="../../dashboard.html">Log Out</a>
             </nav>
         </header>
 
-    <h1>Add New Book</h1>
-    <form action="../../backend/admin/add_book.php" method="POST" enctype="multipart/form-data">
-        <label for="title">Book Title:</label>
-        <input type="text" id="title" name="title" required><br><br>
-        
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author" required><br><br>
-
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea><br><br>
-
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" step="0.01" required><br><br>
-
-        <label for="stock">Stock:</label>
-        <input type="number" id="stock" name="stock"><br><br>
-
-        <label for="image">Book Image:</label>
-        <input type="file" id="image" name="image"><br><br>
-
-        <!-- <label for="image_folder">Image Folder:</label>
-        <select id="image_folder" name="image_folder" required>
-            <option value="poems">Poems</option>
-            <option value="sinhala">Sinhala</option>
-            <option value="english">English</option>
-        </select><br><br> -->
-
-        <label for="category">Category:</label>
-        <select id="category" name="category" required>
-            <option value="poems">Poems</option>
-            <option value="sinhala">Sinhala Books</option>
-            <option value="english">English Books</option>
-        </select><br><br>
-
-        <button type="submit">Add Book</button>
-    </form>
+        <div class="addBookForm">
+          <h1>Add New Book</h1>
+          <form action="../../backend/admin/add_book.php" method="POST" enctype="multipart/form-data">
+            <table>
+              <tr>
+                <td><label for="title">Book Title:</label></td>
+                <td><input type="text" id="title" name="title" required></td>
+              </tr>
+              <tr>
+                <td><label for="author">Author:</label></td>
+                <td><input type="text" id="author" name="author" required></td>
+              </tr>
+              <tr>
+                <td><label for="description">Description:</label></td>
+                <td><textarea id="description" name="description"></textarea></td>
+              </tr>
+              <tr>
+                <td><label for="price">Price:</label></td>
+                <td><input type="number" id="price" name="price" step="0.01" required></td>
+              </tr>
+              <tr>
+                <td><label for="stock">Stock:</label></td>
+                <td><input type="number" id="stock" name="stock"></td>
+              </tr>
+              <tr>
+                <td><label for="image">Book Image:</label></td>
+                <td><input type="file" id="image" name="image"></td>
+              </tr>
+              <tr>
+                <td><label for="category">Category:</label></td>
+                <td>
+                  <select id="category" name="category" required>
+                    <option value="poems">Poems</option>
+                    <option value="sinhala">Sinhala Books</option>
+                    <option value="english">English Books</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: center;">
+                  <button type="submit">Add Book</button>
+                </td>
+              </tr>
+            </table>
+          </form>
+          
+        </div>
+    
 
       <!--footer-->
       <div class="wrapper brown--color">
