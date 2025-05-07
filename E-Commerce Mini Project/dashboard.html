@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Book Heaven</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+        <style>
+          .mainBtn {
+            position: absolute;
+            top: 75%; /* Adjust as needed */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            display: flex;
+            gap: 20px;
+        }
+
+        .mainBtn button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .mainBtn button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        /* .header{
+          background-color: white;
+        } */
+
+        .logo-header {
+          display: block;
+          width: 10%;
+          margin-left: 45%;
+          margin-right: 50%;
+        }
+
+        
+        </style>
+    </head>
+
+    <body>
+        <header class="header">
+            <nav class="nav_bar">
+              <img class="logo-header" src="Assets/images/logo-header.png" alt="" srcset="" width="100%">
+              <ul class="nav_list">
+              </ul>
+            </nav>
+          </header>
+
+          <div class="section__0">
+            <div class="header__section">
+              <div class="header__section__image">
+                <img id="header__image" src="Assets/images/library.jpg" alt="book store" srcset=""/>
+                <div class="header__text__box">
+                  <p>WELCOME</p>
+                  <h1 id="main-heading">BOOK HEAVEN</h1>
+                  <p>Online Book Store</p>
+                </div>
+                <div class="mainBtn">
+                  <a class = "btnLog" href = "Pages/log-in.html" ><button>Log In</button></a>
+                  <a class = "btnSign" href = "Pages/sign-up.html" ><button>Sign Up</button></a>
+                </div>
+                <div class="header__image__overlay"></div>
+              </div>
+            </div>
+          </div>
+
+
+          <!--footer-->
+          <div class="wrapper brown--color">
+            <div class="container">
+              <footer class="row">
+                <div class="footer-col footer-col-logo">
+                  <img class="logo-footer" src="../Assets/images/logo-header.jpg" alt="" srcset="" />
+                </div>
+                <div class="footer-col">
+                  <h4 class="footer-col-hading">Company</h4>
+                  <ul>
+                    <li><a class="page-link" href="dashboard.html">Home</a></li>
+                    <li><a class="page-link" href="Pages/Contact_us.html">Contact Us</a></li>
+                  </ul>
+                </div>
+                
+                <div class="footer-col">
+                  <h4 class="footer-col-hading">Follow us</h4>
+                  <div class="social-links">
+                    <a class="page-link" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="page-link" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="page-link" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="page-link" href=""
+                      ><i class="fab fa-linkedin-in"></i
+                    ></a>
+                  </div>
+                </div>
+                <div class="footer-col"></div>
+              </footer>
+              <footer class="white--color">
+                Copyright &copy; 2025 by E-Commerce mini project Group () by FOT UOR. All rights reserved.
+              </footer>
+            </div>
+          </div>
+          <script src="script.js"></script>
+    </body>
+</html>
