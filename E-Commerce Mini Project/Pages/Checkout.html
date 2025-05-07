@@ -90,7 +90,7 @@
 
         <div class="wrapper">
             <div class="container">
-                <form id="purchase" onsubmit="POST">
+                <form id="purchase" method="POST" action="checkout.php">
                     <h2 class="text__section__heading">Your Basic details</h2>
                     
                     <label for="name">Name:</label>
@@ -134,10 +134,10 @@
 
                     <div style="width:1px; height:30px;"></div>
 
-                    <input class="btn btn-small" type="button" value="Check Out" >
+                    <input class="btn btn-small" type="submit" value="Check Out" >
                     <p id="error" style="display: inline-block; margin-left: 50px;"></p>
 
-                    <input class="btn btn-small" type="button" value="Cancel" >
+                    <input class="btn btn-small" type="reset" value="Cancel" >
 
                       
                 </form>
