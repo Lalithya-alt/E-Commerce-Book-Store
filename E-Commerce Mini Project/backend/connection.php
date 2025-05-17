@@ -105,6 +105,18 @@ CREATE TABLE IF NOT EXISTS checkout_info (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
+$createcardpayment="CREATE TABLE IF NOT EXISTS cardpayment (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cd_name VARCHAR(100) NOT NULL,
+    mobile_num CHAR(10) NOT NULL,
+    cd_mail VARCHAR(100) NOT NULL,
+    cd_name_of_the_card VARCHAR(100) NOT NULL,
+    cd_card_number CHAR(19) NOT NULL,
+    cd_expire_date CHAR(7) NOT NULL, -- Format: MM/YYYY
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+
+
 $checkotedbooks="CREATE TABLE IF NOT EXISTS checkout_books (
     id INT AUTO_INCREMENT PRIMARY KEY,
     checkout_id INT,
@@ -122,7 +134,8 @@ $checkotedbooks="CREATE TABLE IF NOT EXISTS checkout_books (
         'feedback' => $createMessages,
         'payments' => $createPayments,
         'checkout'=> $createcheckout,
-        'checkoutedboks'=>$checkotedbooks
+        'checkoutedboks'=>$checkotedbooks,
+        'cardpayment'=>$createcardpayment
     ];
 
     foreach ($tables as $name => $sql) {
