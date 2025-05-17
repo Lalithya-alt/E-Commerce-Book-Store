@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($email === $adminEmail && $password === $adminPassword) {
         $_SESSION['email'] = $adminEmail;
         $_SESSION['is_admin'] = true;  // You can use this flag to check for admin permissions
-        header("Location: ../Pages/admin-dashboard.html");
+        header("Location: ../Pages/admin/admin-dashboard.html");
         exit;
     }
 
@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Check if password matches (use password_verify if passwords are hashed)
         if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id']; 
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role']; // Storing user role for access control
             header("Location: ../Pages/Index.html");
@@ -60,6 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Close the statement and database connection
     $stmt->close();
     $conn->close();
+
+    ob_end_flush();
+
 }
 ?>
 
