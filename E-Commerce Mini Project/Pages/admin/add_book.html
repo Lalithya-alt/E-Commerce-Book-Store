@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ADD BOOK</title>
+        <link rel="stylesheet" href="../../style.css" />
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <style>
+          .addBookForm{
+              padding-top: 200px;
+              margin-left: auto;
+              margin-right: auto;
+              padding-bottom: 50px;
+          }
+          h1{
+            text-align: center;
+          }
+        </style>
+    </head>
+<body>
+
+        <!--header-->
+        <header class="header">
+            <nav class="nav_bar">
+            <img class="logo-header" src="../../Assets/images/logo-header.jpg" alt="" srcset="" width="100%">
+            <ul class="nav_list">
+                <li class="nav_element">
+                <a href="Index.html" class="nav_link">Home</a></li>
+                <li class="nav_element">
+                <a href="Contact_us.html" class="nav_link">Contact Us</a>
+                </li>
+                <li class="nav_element">
+                <a href="Cart.php" class="nav_link">Cart</a>
+                </li>
+                <li class="nav_element">
+                    <a href="Checkout.php" class="nav_link">Check Out</a>
+                </li>
+            </ul>
+            <a class="btn btn-small" href="../../dashboard.html">Log Out</a>
+            </nav>
+        </header>
+
+        <div class="addBookForm">
+          <h1>Add New Book</h1>
+          <form action="../../backend/admin/add_book.php" method="POST" enctype="multipart/form-data">
+            <table>
+              <tr>
+                <td><label for="title">Book Title:</label></td>
+                <td><input type="text" id="title" name="title" required></td>
+              </tr>
+              <tr>
+                <td><label for="author">Author:</label></td>
+                <td><input type="text" id="author" name="author" required></td>
+              </tr>
+              <tr>
+                <td><label for="description">Description:</label></td>
+                <td><textarea id="description" name="description"></textarea></td>
+              </tr>
+              <tr>
+                <td><label for="price">Price:</label></td>
+                <td><input type="number" id="price" name="price" step="0.01" required></td>
+              </tr>
+              <tr>
+                <td><label for="stock">Stock:</label></td>
+                <td><input type="number" id="stock" name="stock"></td>
+              </tr>
+              <tr>
+                <td><label for="image">Book Image:</label></td>
+                <td><input type="file" id="image" name="image"></td>
+              </tr>
+              <tr>
+                <td><label for="category">Category:</label></td>
+                <td>
+                  <select id="category" name="category" required>
+                    <option value="poems">Poems</option>
+                    <option value="sinhala">Sinhala Books</option>
+                    <option value="english">English Books</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: center;">
+                  <button type="submit">Add Book</button>
+                </td>
+              </tr>
+            </table>
+          </form>
+          
+        </div>
+    
+
+      <!--footer-->
+      <div class="wrapper brown--color">
+        <div class="container">
+          <footer class="row">
+            <div class="footer-col footer-col-logo">
+              <img class="logo-footer" src="assets/images/logo-header.jpg" alt="" srcset="" />
+            </div>
+            <div class="footer-col">
+              <h4 class="footer-col-hading">Company</h4>
+              <ul>
+                <li><a class="page-link" href="index.html">Home</a></li>
+                <li><a class="page-link" href="Contact_us.html">Contact Us</a></li>
+              </ul>
+            </div>
+            
+            <div class="footer-col">
+              <h4 class="footer-col-hading">Follow us</h4>
+              <div class="social-links">
+                <a class="page-link" href=""><i class="fab fa-facebook-f"></i></a>
+                <a class="page-link" href=""><i class="fab fa-twitter"></i></a>
+                <a class="page-link" href=""><i class="fab fa-instagram"></i></a>
+                <a class="page-link" href=""
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+            <div class="footer-col"></div>
+          </footer>
+          <footer class="white--color">
+            Copyright &copy; 2025 by E-Commerce mini project Group () by FOT UOR. All rights reserved.
+          </footer>
+        </div>
+      </div>
+</body>
+</html>

@@ -44,6 +44,9 @@
         #error{
             color: red;
         }
+
+
+        
         </style> 
 
     </head>
@@ -59,7 +62,7 @@
                   <a href="Contact_us.html" class="nav_link">Contact Us</a>
                 </li>
                 <li class="nav_element">
-                  <a href="Cart.html" class="nav_link">Cart</a>
+                  <a href="Cart.php" class="nav_link">Cart</a>
                 </li>
                 <li class="nav_element">
                     <a href="Checkout.html" class="nav_link">Check Out</a>
@@ -68,6 +71,9 @@
               <a class="btn btn-small" href="../dashboard.html">Log Out</a>
             </nav>
         </header>
+
+       
+
         
         <div class="section__6">
             <div class="_wrapper">
@@ -85,12 +91,11 @@
               <h2 id="text__heading_6">Just a few clicks to go!</h2>
             </div>
           </div>
-
      
 
         <div class="wrapper">
             <div class="container">
-                <form id="purchase" onsubmit="POST">
+                <form id="purchase" method="POST" action="checkout.php">
                     <h2 class="text__section__heading">Your Basic details</h2>
                     
                     <label for="name">Name:</label>
@@ -134,10 +139,10 @@
 
                     <div style="width:1px; height:30px;"></div>
 
-                    <input class="btn btn-small" type="button" value="Check Out" >
+                    <input class="btn btn-small" type="submit" value="Check Out" >
                     <p id="error" style="display: inline-block; margin-left: 50px;"></p>
 
-                    <input class="btn btn-small" type="button" value="Cancel" >
+                    <input class="btn btn-small" type="reset" value="Cancel" >
 
                       
                 </form>
@@ -155,7 +160,6 @@
               <h4 class="footer-col-hading">Company</h4>
               <ul>
                 <li><a class="page-link" href="index.html">Home</a></li>
-                <li><a class="page-link" href="About_us.html">About Us</a></li>
                 <li><a class="page-link" href="Contact_us.html">Contact Us</a></li>
               </ul>
             </div>
@@ -174,11 +178,20 @@
             <div class="footer-col"></div>
           </footer>
           <footer class="white--color">
-            Copyright &copy; 2025 by Lalithya Rasingolla. All rights reserved.
+            Copyright &copy; 2025 by E-Commerce mini project Group () by FOT UOR. All rights reserved.
           </footer>
         </div>
       </div>
       <script src="../script.js"></script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const total = localStorage.getItem("cartTotal");
+            document.getElementById("checkoutTotal").innerText = total ? total : "0.00";
+        });
+        </script>
+
+        
       
     </body>
 </html>         

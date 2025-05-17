@@ -147,10 +147,10 @@
             <a href="Contact_us.html" class="nav_link">Contact Us</a>
             </li>
             <li class="nav_element">
-            <a href="Cart.html" class="nav_link">Cart</a>
+            <a href="Cart.php" class="nav_link">Cart</a>
             </li>
             <li class="nav_element">
-                <a href="Checkout.html" class="nav_link">Check Out</a>
+                <a href="Checkout.php" class="nav_link">Check Out</a>
             </li>
         </ul>
         <a class="btn btn-small" href="../dashboard.html">Log Out</a>
@@ -216,7 +216,8 @@
 
     <div class="wrapper">
         <div class="container">
-            <form id="contactForm" onsubmit="return formValidate()">
+            <form id="contactForm" method="POST" action="../backend/feedback.php" onsubmit="return FeedbackFormValidate()">
+
                 <h2 class="text__section__heading">Feedback</h2>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" onfocus="resetError()">
@@ -244,7 +245,6 @@
               <h4 class="footer-col-hading">Company</h4>
               <ul>
                 <li><a class="page-link" href="index.html">Home</a></li>
-                <li><a class="page-link" href="About_us.html">About Us</a></li>
                 <li><a class="page-link" href="Contact_us.html">Contact Us</a></li>
               </ul>
             </div>
@@ -263,7 +263,7 @@
             <div class="footer-col"></div>
           </footer>
           <footer class="white--color">
-            Copyright &copy; 2025 by Lalithya Rasingolla. All rights reserved.
+            Copyright &copy; 2025 by E-Commerce mini project Group () by FOT UOR. All rights reserved.
           </footer>
         </div>
       </div>
