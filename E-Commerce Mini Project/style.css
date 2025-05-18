@@ -668,6 +668,7 @@ body {
 /* Dashboard Styles */
 .wrapper-dashboard {
     margin: 126px 0;
+    
 }
 
 #-heading {
@@ -836,4 +837,25 @@ tr:nth-of-type(even) {
     text-align: center;
     align-self: center;
     padding: 24px;
+}
+
+.subscribe{
+    display:flex;
+    padding-bottom:30px;
+    justify-content: flex-end;
+             
+}
+
+.readbook {
+    position: absolute;
+    color: #fff;
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    padding: 24px 36px;
+    z-index: 1;
 }

@@ -44,6 +44,9 @@
         #error{
             color: red;
         }
+
+
+        
         </style> 
 
     </head>
@@ -68,6 +71,9 @@
               <a class="btn btn-small" href="../dashboard.html">Log Out</a>
             </nav>
         </header>
+
+       
+
         
         <div class="section__6">
             <div class="_wrapper">
@@ -85,7 +91,6 @@
               <h2 id="text__heading_6">Just a few clicks to go!</h2>
             </div>
           </div>
-
      
 
         <div class="wrapper">
@@ -178,6 +183,15 @@
         </div>
       </div>
       <script src="../script.js"></script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const total = localStorage.getItem("cartTotal");
+            document.getElementById("checkoutTotal").innerText = total ? total : "0.00";
+        });
+        </script>
+
+        
       
     </body>
 </html>         

@@ -20,6 +20,11 @@ $result = $stmt->get_result();
   <title>Poems Books</title>
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    .wrapper{
+      padding-top: 200px;
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -46,7 +51,7 @@ $result = $stmt->get_result();
               <h3 class="component__heading"><?php echo htmlspecialchars($book['title'] ?? ''); ?></h3>
               <img class="room-image" src="../Assets/images/english/<?php echo htmlspecialchars($book['image_url'] ?? 'default.jpg'); ?>" alt="Book Image">
               <div class="component__description">
-                <p><?php echo nl2br(htmlspecialchars($book['description'] ?? '')); ?></p>
+                <p><?php echo nl2br(htmlspecialchars($book['Description'] ?? 'No Description found')); ?></p>
                 <div style="width:1px; height:15px;"></div>
                 <ul>
                     <li><strong>AUTHOR:</strong> <?php echo htmlspecialchars($book['author'] ?? ''); ?></li>
