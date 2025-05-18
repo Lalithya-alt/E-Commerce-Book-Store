@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = "Expiry must be in YYYY-MM format.";
     }
 
-    if (empty($book_authors)) $errors[]="Not book Selected";
+    if (empty($book_authors)) $errors[] = "Not book Selected";
 
     if (!empty($errors)) {
         echo "<ul style='color:red;'>";
@@ -56,14 +56,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $checkout_id = $conn->insert_id; // Get the ID for linking books
 
         // Insert each book
+        // Prepare all statements
+
         $book_stmt = $conn->prepare("INSERT INTO checkout_books (checkout_id, book_name, book_author) VALUES (?, ?, ?)");
+        $stock_check_stmt = $conn->prepare("SELECT stock FROM books WHERE title = ? AND author = ?");
+        $stock_update_stmt = $conn->prepare("UPDATE books SET stock = stock - 1 WHERE title = ? AND author = ?");
 
         for ($i = 0; $i < count($book_names); $i++) {
-            $book_name = $book_names[$i];
-            $book_author = $book_authors[$i];
+            $book_name = trim($book_names[$i]);
+            $book_author = trim($book_authors[$i]);
+
+            // 1. Insert into checkout_books
             $book_stmt->bind_param("iss", $checkout_id, $book_name, $book_author);
             $book_stmt->execute();
+
+            // 2. Check stock from books table
+            $stock_check_stmt->bind_param("ss", $book_name, $book_author);
+            $stock_check_stmt->execute();
+            $result = $stock_check_stmt->get_result();
+
+            if ($row = $result->fetch_assoc()) {
+                if ($row['stock'] >= 1) {
+                    // 3. Update stock - reduce by 1
+                    $stock_update_stmt->bind_param("ss", $book_name, $book_author);
+                    $stock_update_stmt->execute();
+                } else {
+                    echo "<script>
+                alert('❌ \"$book_name\" by $book_author is out of stock.');
+                window.history.back();
+            </script>";
+                    exit;
+                }
+            } else {
+                echo "<script>
+            alert('❌ \"$book_name\" by $book_author not found in book database.');
+            window.history.back();
+        </script>";
+                exit;
+            }
         }
+
 
         echo "<script>
             alert('✅ Checkout successful! Thank you for your order.');
