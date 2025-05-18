@@ -838,3 +838,10 @@ tr:nth-of-type(even) {
     align-self: center;
     padding: 24px;
 }
+
+.subscribe{
+    display:flex;
+    padding-bottom:30px;
+    justify-content: flex-end;
+             
+}
