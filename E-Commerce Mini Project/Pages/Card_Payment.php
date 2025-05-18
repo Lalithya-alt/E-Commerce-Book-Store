@@ -139,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="exp_month_year">Expiry Month and Year:</label>
         <input type="month" name="exp_month_year" id="exp_month_year" />
 
-        <button type="submit">Check Out</button>
+        <button type="submit">Pay</button>
     </form>
 
     <script>
