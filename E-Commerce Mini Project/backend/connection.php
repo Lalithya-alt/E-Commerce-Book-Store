@@ -4,7 +4,7 @@
     // Configuration
     $host = "localhost";
     $user = "root";
-    $pass = "";
+    $pass = "1234";
     $dbname = "online_bookstore";
 
     // Enable error reporting
@@ -113,6 +113,20 @@ $checkotedbooks="CREATE TABLE IF NOT EXISTS checkout_books (
     FOREIGN KEY (checkout_id) REFERENCES checkout_info(id) ON DELETE CASCADE
 )";
 
+$premium_users="CREATE TABLE IF NOT EXISTS premium_users (
+    username VARCHAR(255)
+)";
+
+$subcribers="CREATE TABLE IF NOT EXISTS subscriberspayments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    mobile VARCHAR(15),
+    email VARCHAR(100),
+    name_on_card VARCHAR(100),
+    credit_card_no VARCHAR(20),
+    exp_month_year VARCHAR(7)
+);";
+
     // Create tables
     $tables = [
         'users' => $createUsers,
@@ -122,7 +136,9 @@ $checkotedbooks="CREATE TABLE IF NOT EXISTS checkout_books (
         'feedback' => $createMessages,
         'payments' => $createPayments,
         'checkout'=> $createcheckout,
-        'checkoutedboks'=>$checkotedbooks
+        'checkoutedboks'=>$checkotedbooks,
+        'premium_users'=>$premium_users,
+        'subscribers'=>$subcribers
     ];
 
     foreach ($tables as $name => $sql) {
