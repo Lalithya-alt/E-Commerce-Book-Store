@@ -1,4 +1,13 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
+
+
 session_start();
 include '../backend/connection.php'; // Make sure this connects $conn
 
@@ -100,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit;
             }
 
-             // 4. Fetch price
+            // 4. Fetch price
             $price_stmt->bind_param("ss", $book_name, $book_author);
             $price_stmt->execute();
             $price_result = $price_stmt->get_result();
@@ -110,8 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $total_price += $price;
                 $book_details .= "- \"$book_name\" by $book_author — Rs. $price\n";
             }
-
-
         }
 
         // Send confirmation email
@@ -132,14 +139,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             $mail = new PHPMailer(true);
             $mail->isSMTP();
-            $mail->Host = 'smtp.yourhost.com';             //  Change this
+            $mail->Host = 'smtp.gmail.com';             //  Change this
             $mail->SMTPAuth = true;
-            $mail->Username = 'your_email@yourdomain.com'; //  Your SMTP email
-            $mail->Password = 'your_password';             //  Your SMTP password
+            $mail->Username = 'sadeedina2002@gmail.com'; //  Your SMTP email
+            $mail->Password = 'gxjw nxbm lfiy dthz';             //  Your SMTP password
             $mail->SMTPSecure = 'tls';                     // 'ssl' if using port 465
             $mail->Port = 587;                             // 465 if using 'ssl'
 
-            $mail->setFrom('your_email@yourdomain.com', 'Book Heaven');
+            $mail->setFrom('sadeedina2002@gmail.com', 'Book Heaven');
             $mail->addAddress($email, $name);
 
             $mail->Subject = $subject;
@@ -149,11 +156,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } catch (Exception $e) {
             error_log("❌ Email Error: {$mail->ErrorInfo}");
         }
-
-
-
-
-
         echo "<script>
             alert('✅ Checkout successful! Thank you for your order.');
             window.location.href = '../pages/Checkout.php';
