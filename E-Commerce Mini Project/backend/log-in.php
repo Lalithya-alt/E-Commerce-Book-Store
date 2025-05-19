@@ -46,10 +46,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Check if password matches (use password_verify if passwords are hashed)
         if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id']; 
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role']; // Storing user role for access control
-            header("Location: ../Pages/Index.html");
+
+            // Check if user is a premium user
+            $checkPremium = $conn->prepare("SELECT * FROM premium_users WHERE username = ?");
+            $checkPremium->bind_param("s", $user['email']);
+            $checkPremium->execute();
+            $premiumResult = $checkPremium->get_result();
+
+            if ($premiumResult->num_rows > 0) {
+                // Premium user
+                header("Location: ../Pages/Subscribed_Homepage.html");
+            } else {
+                // Normal user
+                header("Location: ../Pages/Index.html");
+            }
             exit;
         } else {
             echo "Incorrect password!";
@@ -63,8 +76,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn->close();
 
     ob_end_flush();
-
 }
-?>
-
-
