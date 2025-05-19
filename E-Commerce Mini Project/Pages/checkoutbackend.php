@@ -70,10 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $book_stmt = $conn->prepare("INSERT INTO checkout_books (checkout_id, book_name, book_author) VALUES (?, ?, ?)");
         $stock_check_stmt = $conn->prepare("SELECT stock FROM books WHERE title = ? AND author = ?");
         $stock_update_stmt = $conn->prepare("UPDATE books SET stock = stock - 1 WHERE title = ? AND author = ?");
+
         $price_stmt = $conn->prepare("SELECT price FROM books WHERE title = ? AND author = ?");
 
         $book_details = "";
         $total_price = 0;
+
 
 
         for ($i = 0; $i < count($book_names); $i++) {
@@ -108,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </script>";
                 exit;
             }
+
 
             // 4. Fetch price
             $price_stmt->bind_param("ss", $book_name, $book_author);
@@ -156,6 +159,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } catch (Exception $e) {
             error_log("❌ Email Error: {$mail->ErrorInfo}");
         }
+
+
         echo "<script>
             alert('✅ Checkout successful! Thank you for your order.');
             window.location.href = '../pages/Checkout.php';
