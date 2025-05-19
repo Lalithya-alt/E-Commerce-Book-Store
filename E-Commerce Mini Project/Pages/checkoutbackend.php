@@ -61,6 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $book_stmt = $conn->prepare("INSERT INTO checkout_books (checkout_id, book_name, book_author) VALUES (?, ?, ?)");
         $stock_check_stmt = $conn->prepare("SELECT stock FROM books WHERE title = ? AND author = ?");
         $stock_update_stmt = $conn->prepare("UPDATE books SET stock = stock - 1 WHERE title = ? AND author = ?");
+        $price_stmt = $conn->prepare("SELECT price FROM books WHERE title = ? AND author = ?");
+
+        $book_details = "";
+        $total_price = 0;
+
 
         for ($i = 0; $i < count($book_names); $i++) {
             $book_name = trim($book_names[$i]);
@@ -94,7 +99,59 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </script>";
                 exit;
             }
+
+             // 4. Fetch price
+            $price_stmt->bind_param("ss", $book_name, $book_author);
+            $price_stmt->execute();
+            $price_result = $price_stmt->get_result();
+
+            if ($price_row = $price_result->fetch_assoc()) {
+                $price = $price_row['price'];
+                $total_price += $price;
+                $book_details .= "- \"$book_name\" by $book_author — Rs. $price\n";
+            }
+
+
         }
+
+        // Send confirmation email
+        $subject = " Your Book Order Confirmation - Book Heaven";
+        $headers = "From: Book Heaven <no-reply@leesagallery.com>\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+        $message = "Dear $name,\n\n";
+        $message .= "Thank you for your purchase from Book Heaven!\n\n";
+        $message .= " Shipping City: $city\n";
+        $message .= " Book(s) Ordered:\n$book_details\n";
+        $message .= " Total Price: Rs. $total_price\n\n";
+        $message .= "Your books will be dispatched shortly.\n\n";
+        $message .= "Best Regards,\nBook Heaven Team";
+
+        // mail($email, $subject, $message, $headers);
+
+        try {
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->Host = 'smtp.yourhost.com';             //  Change this
+            $mail->SMTPAuth = true;
+            $mail->Username = 'your_email@yourdomain.com'; //  Your SMTP email
+            $mail->Password = 'your_password';             //  Your SMTP password
+            $mail->SMTPSecure = 'tls';                     // 'ssl' if using port 465
+            $mail->Port = 587;                             // 465 if using 'ssl'
+
+            $mail->setFrom('your_email@yourdomain.com', 'Book Heaven');
+            $mail->addAddress($email, $name);
+
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+
+            $mail->send();
+        } catch (Exception $e) {
+            error_log("❌ Email Error: {$mail->ErrorInfo}");
+        }
+
+
+
 
 
         echo "<script>
