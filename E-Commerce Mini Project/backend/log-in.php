@@ -65,10 +65,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             exit;
         } else {
-            echo "Incorrect password!";
+             echo "<script>
+        alert('Incorrect Password!');
+        window.history.back();
+    </script>";
         }
     } else {
-        echo "User not found!";
+        echo "<script>
+        alert('User Not Found!');
+        window.history.back();
+    </script>";
     }
 
     // Close the statement and database connection
