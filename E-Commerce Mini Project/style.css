@@ -71,6 +71,7 @@ body {
     border-bottom: 8px solid #0B2E33;
 }
 
+
 .btn:link,
 .btn:visited,
 .btn {
@@ -150,12 +151,14 @@ body {
 
 .header {
     width: 100%;
-    position: fixed;
+    position:fixed;
     top: 0;
     background-color: rgba(233, 236, 239, 0.8);
     padding: 16px;
     z-index: 1;
 }
+
+
 
 .logo-header {
     display: block; 
@@ -578,6 +581,7 @@ body {
     display: block;
 }
 
+
 /* Sign-in / Login styles */
 
 .form-container {
@@ -971,3 +975,16 @@ tr:nth-of-type(even) {
   }
 
 }
+
+
+/* For mobile - keep header always visible */
+@media (max-width: 768px) {
+    .header {
+        position: static;
+        transform: none !important;
+    }
+    body {
+        padding-top: 0;
+    }
+}
+
