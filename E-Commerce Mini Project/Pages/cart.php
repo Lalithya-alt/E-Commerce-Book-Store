@@ -140,20 +140,20 @@ session_start();
             font-size: 16px;
             }
 
-            .book-buttons {
-  display: flex;
-  gap: 10px; /* Adjust the space between buttons */
+          .book-buttons {
+              display: flex;
+              gap: 10px; /* Adjust the space between buttons */
   
-}
-.main-book-buttons{
-  display: flex;
-  gap:100px;
+            }
+          .main-book-buttons{
+              display: flex;
+              gap:100px;
 
-}
+            }   
 
-.proceed{
-  flex: 3;
-}
+          .proceed{
+              flex: 3;
+            }
 
         </style>
     </head>
