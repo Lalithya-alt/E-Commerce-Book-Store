@@ -51,18 +51,29 @@
 <div class="table-container" style="align-items: center;">
     <table id="table-books" border="1" style="margin: auto;">
         <tr>
+            <th>ID</th>
             <th>TITLE</th>
             <th>AUTHOR</th>
             <th>PRICE</th>
             <th>STOCK</th>
             <th>CATEGORY</th>
             <th>CREATED_AT</th>
+            <th>ACTION</th>
         </tr>
 
         <?php
         include '../../backend/connection.php';
 
-        $sql = "SELECT title, author, price, stock, description, category_name, created_at 
+        // Handle delete request at the top of this file
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_id'])) {
+            $delete_id = $_POST['delete_id'];
+            $del_sql = "DELETE FROM books WHERE id = ?";
+            $stmt = mysqli_prepare($conn, $del_sql);
+            mysqli_stmt_bind_param($stmt, "i", $delete_id);
+            mysqli_stmt_execute($stmt);
+        }
+
+        $sql = "SELECT id, title, author, price, stock, description, category_name, created_at 
                 FROM books";
         $result = mysqli_query($conn, $sql);
 
@@ -70,12 +81,19 @@
             while ($row = mysqli_fetch_assoc($result)):
         ?>
                 <tr>
+                    <td><?= htmlspecialchars($row['id']) ?></td>
                     <td><?= htmlspecialchars($row['title']) ?></td>
                     <td><?= htmlspecialchars($row['author']) ?></td>
                     <td><?= htmlspecialchars($row['price']) ?></td>
                     <td><?= htmlspecialchars($row['stock']) ?></td>
                     <td><?= htmlspecialchars($row['category_name']) ?></td>
                     <td><?= htmlspecialchars($row['created_at']) ?></td>
+                    <td>
+                      <form method="POST" onsubmit="return confirm('Are you sure you want to delete this book?');">
+                          <input type="hidden" name="delete_id" value="<?= $row['id'] ?>">
+                          <input type="submit" class="btn btn-small" value="DELETE">
+                      </form>
+                    </td>
                 </tr>
         <?php
             endwhile;
@@ -94,6 +112,8 @@
                 <input class="btn btn-small" type="submit" value="ADD BOOK" />
               </div>-->
 <div style="width:1px; height:40px;"></div> 
+
+
 
      <!--footer-->
      <div class="wrapper brown--color">
