@@ -29,7 +29,63 @@
             text-align: center;
             letter-spacing: 10px;
           }
-          
+          /* .footer-col ul {
+              list-style: none;
+          } */
+          /* .logo-footer{
+            display: flex;
+          } */
+          /* .footer-col footer-col-logo{
+            display: contents;
+          } */
+
+          .about-and-ad {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-top: 20px;
+          }
+
+          .section__1 {
+            flex: 100;
+            min-width: 0; /* Helps prevent overflow */
+          }
+
+          .advertisement {
+            height: 200px;
+            width: 100%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            overflow: hidden;
+            position: relative;
+          }
+
+          .advertisement img {
+            height: 100%;
+            width: auto;
+            object-fit:cover;
+          }
+
+
+          .close-ad {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #000;
+            line-height: 1;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+          }
+
+          .des{
+            margin-left: 10px;
+            margin-right: 10px;
+          }
         </style>
     </head>
 
@@ -53,7 +109,6 @@
               <a class="btn btn-small" href="../dashboard.html">Log Out</a>
             </nav>
           </header>
-
           <div class="section__0">
             <div class="header__section">
               <div class="header__section__image">
@@ -74,37 +129,39 @@
           </div>
 
           <div class="container">
-            <div class="section__1">
-              <div class="text__section">
-                <h2 class="text__section__heading">About Us</h2>
-                <p class="text__section__description">
-                         Welcome to <b> Book Heaven</b>, your trusted destination for discovering books you'll love. 
-                    We’re passionate about connecting readers with stories that inspire, educate, and entertain. 
-                    From bestsellers to hidden gems across every genre, our goal is to make book buying easy,
-                     enjoyable, and accessible for everyone. Whether you're a casual reader or a lifelong book 
-                     lover, we're here to help you find your next great read.
-                </p>
-
-                <p class="text__section__description">
-                    At Book Heaven, we believe in the power of books to inform, inspire, and ignite the imagination. 
-                    With fast delivery, secure checkout, and helpful customer service, we aim to offer more than just 
-                    books—we offer an experience.
-                </p>
-                <p class="text__section__description">
+            <div class="about-and-ad">
+              <!-- About Us Section -->
+              <div class="section__1">
+                <div class="text__section">
+                  <h2 class="text__section__heading">About Us</h2>
+                  <p class="text__section__description">
+                    Welcome to <b>Book Heaven</b>, your trusted destination for discovering books you'll love...
+                  </p>
+                  <p class="text__section__description">
+                    At Book Heaven, we believe in the power of books to inform, inspire, and ignite the imagination...
+                  </p>
+                  <p class="text__section__description">
                     Thank you for being part of our story. Happy reading!
-                </p>
-                
+                  </p>
+                </div>
+                <div class="section__1__img__container">
+                  <img
+                    id="section__1__img"
+                    src="../Assets/images/main_image.jpg"
+                    alt="about image"
+                  />
+                </div>
               </div>
-              <div class="section__1__img__container">
-                <img
-                  id="section__1__img"
-                  src="../Assets/images/main_image.jpg"
-                  alt=""
-                  srcset=""
-                />
+
+            <!-- Advertisement Section -->
+            <div class="advertisement" id="advertisement">
+                <a href="https://www.lankapropertyweb.com" target="_blank"><img src="../Assets/ads/ad2.gif" alt="Ad"></a>
+                <h3 class="des">Welcome to AutoLanka Lands - We connect you with the best deals on cars and lands across Sri Lanka. Whether you're buying your dream car or investing in valuable property, we’ve got you covered — easy, reliable, and affordable.</h3>
+                <button class="close-ad" onclick="closeAd()">×</button>
+              </div>
               </div>
             </div>
-          </div>
+
 
           <div class="wrapper grey--color">
             <div class="container">
@@ -161,11 +218,26 @@
                   </div>
                 </div>
               </div>
-              <div class="subscribe">
+            </div>
+          </div><br>
+
+          <div class="section__6">
+            <div class="_wrapper">
+              <div class="section__6__image">
+                <img
+                  id="__image"
+                  src="../Assets/images/ebook.jpg"
+                  alt="contact us"
+                  srcset=""
+                />
+                <div class="section__6__image__overlay"></div>
+              </div>
+            </div>
+            <div class="section__6__text__box">
+              <h1 id="text__heading_6">Subscribe us with Rs.3000 and read unlimited books for <br>1 Month</h1>
               <a class="btn btn-big" href="Card_Form.html">Subscribe For Month</a>
             </div>
-            </div>
-          </div>
+          </div><br><br>
 
           <div class="section__6">
             <div class="_wrapper">
@@ -285,10 +357,23 @@
                 <div class="footer-col"></div>
               </footer>
               <footer class="white--color">
-                Copyright &copy; 2025 by E-Commerce mini project Group () by FOT UOR. All rights reserved.
+                Copyright &copy; 2025 by E-Commerce mini project Group 6 by FOT UOR. All rights reserved.
               </footer>
             </div>
           </div>
           <script src="../script.js"></script>
+          <script>
+            function closeAd() {
+              const ad = document.getElementById("advertisement");
+              if (ad) {
+                ad.style.display = "none";
+              }
+            }
+
+            // Auto-hide after 10 seconds (10,000 ms)
+            setTimeout(closeAd, 10000);
+          </script>
+
+
     </body>
 </html>

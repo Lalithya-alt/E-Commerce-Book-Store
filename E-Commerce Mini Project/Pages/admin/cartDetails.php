@@ -18,18 +18,18 @@
         <img class="logo-header" src="../../Assets/images/logo-header.jpg" alt="" srcset="" width="100%">
         <ul class="nav_list">
             <li class="nav_element">
-            <a href="Index.html" class="nav_link">Home</a></li>
+            <a href="../Index.html" class="nav_link">Home</a></li>
             <li class="nav_element">
-            <a href="Contact_us.html" class="nav_link">Contact Us</a>
+            <a href="../Contact_us.html" class="nav_link">Contact Us</a>
             </li>
             <li class="nav_element">
-            <a href="cart.php" class="nav_link">Cart</a>
+            <a href="../cart.php" class="nav_link">Cart</a>
             </li>
             <li class="nav_element">
-                <a href="Checkout.html" class="nav_link">Check Out</a>
+                <a href="../Checkout.html" class="nav_link">Check Out</a>
             </li>
         </ul>
-        <a class="btn btn-small" href="../dashboard.html">Log Out</a>
+        <a class="btn btn-small" href="../../dashboard.html">Log Out</a>
         </nav>
     </header>
 
@@ -41,6 +41,7 @@
           <div class="table-container" style="align-items: center;">
               <table id="table-cart" border ="1" style="margin: auto;">
                   <tr>
+                      <th>USER NAME</th>
                       <th>BOOK NAME</th>
                       <th>BOOK AUTHOR</th>
                       <th>PRICE</th>
@@ -51,13 +52,16 @@
                   <?php
                   include '../../backend/connection.php'; // Ensure this correctly initializes $conn
 
-                  $sql = "SELECT book_name, book_author, price, created_at FROM cart";
+                  $sql = "SELECT cart.book_name, cart.book_author, cart.price, cart.created_at, users.name AS user_name 
+                      FROM cart 
+                      JOIN users ON cart.user_id = users.id";
                   $result = mysqli_query($conn, $sql);
 
                   if (mysqli_num_rows($result) > 0):
                       while ($row = mysqli_fetch_assoc($result)):
                   ?>
                           <tr>
+                              <td><?= htmlspecialchars($row['user_name']) ?></td>
                               <td><?= htmlspecialchars($row['book_name']) ?></td>
                               <td><?= htmlspecialchars($row['book_author']) ?></td>
                               <td><?= htmlspecialchars($row['price']) ?></td>
