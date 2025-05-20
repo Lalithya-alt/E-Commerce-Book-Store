@@ -253,7 +253,7 @@ session_start();
              });
 
              localStorage.setItem("cartItems", JSON.stringify(cartItems));
-             window.location.href = "Checkout.html";
+             window.location.href = "Checkout.php";
             }
             </script>
 
