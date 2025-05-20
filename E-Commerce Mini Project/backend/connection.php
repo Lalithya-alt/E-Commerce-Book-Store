@@ -4,7 +4,7 @@
     // Configuration
     $host = "localhost";
     $user = "root";
-    $pass = "1234";
+    $pass = "";
     $dbname = "online_bookstore";
 
     // Enable error reporting

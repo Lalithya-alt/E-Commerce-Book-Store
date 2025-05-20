@@ -140,6 +140,21 @@ session_start();
             font-size: 16px;
             }
 
+          .book-buttons {
+              display: flex;
+              gap: 10px; /* Adjust the space between buttons */
+  
+            }
+          .main-book-buttons{
+              display: flex;
+              gap:100px;
+
+            }   
+
+          .proceed{
+              flex: 3;
+            }
+
         </style>
     </head>
 
@@ -228,7 +243,16 @@ session_start();
             <div style="width: 80%; margin: 20px auto; text-align: right;">
             <p>Total: Rs. <span id="totalAmount"><?= $total ?></span></p>
             <!-- <button onclick="proceedToCheckout()">Proceed</button> -->
-            <button class="btn-proceed" onclick="proceedToCheckout()">Proceed</button>
+             <div class = "main-book-buttons">
+              <div class="book-buttons">
+                <input class="btn-proceed" type="button"  onclick="window.location.href='../Pages/sinhala.php'" value="Sinhala books"/>
+                <input class="btn-proceed" type="button"  onclick="window.location.href='../Pages/english.php'" value="English books"/>
+                <input class="btn-proceed" type="button"  onclick="window.location.href='../Pages/poems.php'" value="Poems books"/>
+              </div>
+              <div class = "proceed">
+                <button class="btn-proceed" onclick="proceedToCheckout()" >Proceed</button>
+              </div>
+             </div>
             </div>
 
 
