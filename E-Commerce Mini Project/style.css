@@ -199,6 +199,8 @@ body {
 .nav_element {
     position: relative;
     transition: 0.5s;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .nav_element::after {
