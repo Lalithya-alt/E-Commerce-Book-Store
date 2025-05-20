@@ -71,6 +71,7 @@ body {
     border-bottom: 8px solid #0B2E33;
 }
 
+
 .btn:link,
 .btn:visited,
 .btn {
@@ -150,12 +151,14 @@ body {
 
 .header {
     width: 100%;
-    position: fixed;
+    position:fixed;
     top: 0;
     background-color: rgba(233, 236, 239, 0.8);
     padding: 16px;
     z-index: 1;
 }
+
+
 
 .logo-header {
     display: block; 
@@ -266,9 +269,16 @@ body {
 .section__1 {
     display: grid;
     grid-template-columns: 50% 40%;
-    gap: 10%;
+    gap: 0%;
     margin: 0 auto;
     padding: 76px 0;
+}
+
+.section__1__img{
+    width: 100%;
+}
+.text__section{
+    min-width: 300px;
 }
 
 .text__section__heading {
@@ -577,6 +587,7 @@ body {
     height: auto;
     display: block;
 }
+
 
 /* Sign-in / Login styles */
 
@@ -971,3 +982,16 @@ tr:nth-of-type(even) {
   }
 
 }
+
+
+/* For mobile - keep header always visible */
+@media (max-width: 768px) {
+    .header {
+        position: static;
+        transform: none !important;
+    }
+    body {
+        padding-top: 0;
+    }
+}
+
