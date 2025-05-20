@@ -9,6 +9,11 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
+        <style>
+          .btn-small{
+            margin-left: 30px;
+          }
+        </style>
     </head>
 
     <body>
@@ -18,18 +23,18 @@
         <img class="logo-header" src="../../Assets/images/logo-header.jpg" alt="" srcset="" width="100%">
         <ul class="nav_list">
             <li class="nav_element">
-            <a href="Index.html" class="nav_link">Home</a></li>
+            <a href="../Index.html" class="nav_link">Home</a></li>
             <li class="nav_element">
-            <a href="Contact_us.html" class="nav_link">Contact Us</a>
+            <a href="../Contact_us.html" class="nav_link">Contact Us</a>
             </li>
             <li class="nav_element">
-            <a href="cart.php" class="nav_link">Cart</a>
+            <a href="../cart.php" class="nav_link">Cart</a>
             </li>
             <li class="nav_element">
                 <a href="Checkout.html" class="nav_link">Check Out</a>
             </li>
         </ul>
-        <a class="btn btn-small" href="../dashboard.html">Log Out</a>
+        <a class="btn btn-small" href="../../dashboard.html">Log Out</a>
         </nav>
     </header>
 
