@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         echo "<script>
             alert('✅ Checkout successful! Thank you for your order.');
-            window.location.href = '../pages/Checkout.php';
+            window.location.href = '../pages/index.html';
         </script>";
         exit;
     } else {
