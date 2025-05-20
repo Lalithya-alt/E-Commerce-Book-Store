@@ -517,6 +517,7 @@ body {
     padding: 56px 0;
 }
 
+
 .footer-col-logo {
     flex-basis: 25%;
 }
@@ -530,6 +531,7 @@ body {
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: 2px;
+    margin-top: 35px;
     margin-bottom: 26px;
     position: relative;
 }
@@ -568,6 +570,12 @@ body {
 
 .page-link i {
     font-size: 26px;
+}
+
+.logo-footer {
+    width: 200px;
+    height: auto;
+    display: block;
 }
 
 /* Sign-in / Login styles */
