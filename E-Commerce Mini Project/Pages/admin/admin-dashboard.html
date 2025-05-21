@@ -16,6 +16,55 @@
                 padding-top: 200px;
                 padding-bottom: 300px;
             }
+            .nav_list {
+              list-style: none;
+              margin: 0 auto;
+              display: flex;
+              gap: 2em;
+          }
+          .nav_element {
+              margin-top: auto;
+              margin-bottom: auto;
+          }
+
+          
+
+          .nav-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+          }
+
+          .nav_bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+          }
+
+          .nav-middle {
+            flex: 1;
+            text-align: center;
+          }
+
+          .nav-middle .nav_link {
+            font-size: 18px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+          }
+
+          .nav-right {
+            margin-left: auto;
+          }
+
+          .logout-btn {
+            padding: 8px 16px;
+          }
+          
+
+
             
         </style>
 </head>
@@ -23,22 +72,15 @@
     
     <header class="header">
         <nav class="nav_bar">
-            <img class="logo-header" src="../../Assets/images/logo-header.png" alt="" srcset="" width="100%">
-            <ul class="nav_list">
-            <li class="nav_element">
-                <a href="../Index.html" class="nav_link">Home</a>
-            </li>
-            <li class="nav_element">
-                <a href="Contact_us.html" class="nav_link">Contact Us</a>
-            </li>
-            <li class="nav_element">
-                <a href="cart.php" class="nav_link">Cart</a>
-            </li>
-            <li class="nav_element">
-                <a href="Checkout.html" class="nav_link">Check Out</a>
-                </li>
-            </ul>
-            <a class="btn btn-small" href="../../dashboard.html">Log Out</a>
+          <img class="logo-header" src="../../Assets/images/logo-header.png" alt="" width="100px" />
+
+          <div class="nav-middle">
+            <a href="../Index.html" class="nav_link">Home</a>
+          </div>
+
+          <div class="nav-right">
+            <a class="btn btn-small logout-btn" href="../../dashboard.html">Log Out</a>
+          </div>
         </nav>
         </header>
             <div class="btnSectionAdminDash">
@@ -79,7 +121,7 @@
             <div class="footer-col"></div>
           </footer>
           <footer class="white--color">
-            Copyright &copy; 2025 by E-Commerce mini project Group () by FOT UOR. All rights reserved.
+            Copyright &copy; 2025 by E-Commerce mini project Group 6 by FOT UOR. All rights reserved.
           </footer>
         </div>
       </div>
