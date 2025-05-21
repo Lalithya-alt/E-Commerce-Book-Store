@@ -20,7 +20,7 @@ $errors=[];
 if (empty($name)) $errors[] = "Name is required.";
 if (empty($mobile)) {
     $errors[] = "Mobile number is required";
-} elseif (!preg_match('/^[0-9]{1,15}$/', $mobile)) {
+} elseif (!preg_match('/^[0-9]{1,10}$/', $mobile)) {
     $errors[] = "Mobile number must contain only digits and be no more than 15 digits long.";
 }
 if (empty($name_on_card)) $errors[] = "Name of the card is required";
